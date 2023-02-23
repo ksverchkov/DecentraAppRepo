@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DecentraApp</title>
+        <style>
+            body {background: #01161E;color: #E2FDFF;font-family: 'Roboto', sans-serif;}
+
+            header.header {
+                display: flex;
+                padding: 10px 20px;
+                align-items: center;
+            }
+
+            search {
+                display: flex;
+                flex-grow: 1;
+                width: 100%;
+                margin-left: 20px;
+            }
+
+            input[type="search"] {
+                display: flex;
+                flex-grow: 1;
+                padding: 10px 20px;
+                border: none;
+                background: transparent;
+                border: 1px solid #E2FDFF;
+                color: #E2FDFF;
+                outline: none;
+            }
+
+            .search-btn {
+                padding: 0px 20px;
+                background: #E2FDFF;
+                border: none;
+            }
+
+            .selector {
+                display: flex;
+                width: 100%;
+            }
+
+            .selector > div {
+                width: calc(100% / 2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px;
+                border: 1px solid;
+            }
+
+            .list-apps.selected {
+                background: #E2FDFF;
+                color: #05161e;
+                border: none;
+            }
+
+            .app-info {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid;
+                margin: 10px 0px;
+                display: none;
+            }
+
+            .app-title {
+                padding: 10px 20px;
+                font-size: 20px;
+                border-bottom: 1px solid;
+                font-weight: bold;
+            }
+
+            .app-install-btn {
+                margin: 10px 20px;
+                border: 1px solid;
+                padding: 10px 20px;
+                text-align: center;
+                background: #E2FDFF;
+                color: #05161e;
+                cursor: pointer;
+            }
+
+            .terminal-view {
+                display: flex;
+                flex-direction: column;
+                margin: 10px 0px;
+                border: 1px solid;
+            }
+
+            .terminal-title {
+                padding: 10px 20px;
+                border-bottom: 1px solid;
+            }
+
+            .sendfield {
+                display: flex;
+                margin: 5px;
+                margin-top: -1px;
+            }
+
+            input.send-input {
+                flex-grow: 1;
+                padding: 10px 20px;
+                border: 1px solid;
+                color: #E2FDFF;
+                background: transparent;
+                outline: none;
+            }
+
+            button.send-btn {background: #E2FDFF;color: #05161e;border: none;}
+
+            output.teminal-code {
+                min-height: 400px;
+                height: 400px;
+                background: transparent;
+                padding: 10px 20px;
+                border: 1px solid;
+                margin: 5px;
+                margin-bottom: 0px;
+                font-family: ui-monospace;
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+        </style>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header class="header">
+            <logo>
+                <svg width="42" height="35" viewBox="0 0 42 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1H8.0922V8.11207H1V1Z" fill="#0000BA"/>
+                    <path d="M33.9078 1H41V8.11207H33.9078V1Z" fill="#0000BA"/>
+                    <path d="M17.1702 26.8879H24.2624V34H17.1702V26.8879Z" fill="#0000BA"/>
+                    <path d="M1 1H8.0922V8.11207H1V1Z" stroke="#1818FF" stroke-width="2"/>
+                    <path d="M33.9078 1H41V8.11207H33.9078V1Z" stroke="#1818FF" stroke-width="2"/>
+                    <path d="M17.1702 26.8879H24.2624V34H17.1702V26.8879Z" stroke="#1818FF" stroke-width="2"/>
+                    <path d="M20.8582 30.0172L6.39007 4.41379H35.8936L20.8582 30.0172Z" stroke="#1818FF" stroke-width="2"/>
+                </svg>
+            </logo>
+            <search>
+                <input type="search">
+                <button class="search-btn">
+                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_204_29)">
+                        <path d="M12.4759 10.9905C13.5047 9.58659 13.9655 7.84601 13.7661 6.11696C13.5666 4.38791 12.7217 2.79791 11.4004 1.66506C10.079 0.532213 8.37858 -0.0599365 6.63937 0.00707871C4.90015 0.0740939 3.25036 0.795332 2.02007 2.0265C0.789788 3.25767 0.0697311 4.90797 0.00396038 6.64723C-0.0618103 8.3865 0.531556 10.0865 1.66535 11.407C2.79914 12.7276 4.38974 13.5714 6.11894 13.7695C7.84813 13.9677 9.58838 13.5057 10.9915 12.4759H10.9905C11.0224 12.5184 11.0564 12.5587 11.0946 12.598L15.1852 16.6887C15.3845 16.888 15.6547 17.0001 15.9366 17.0002C16.2184 17.0003 16.4888 16.8884 16.6881 16.6892C16.8875 16.49 16.9996 16.2197 16.9997 15.9379C16.9998 15.656 16.8879 15.3857 16.6887 15.1863L12.598 11.0957C12.5601 11.0572 12.5192 11.0228 12.4759 10.9905ZM12.75 6.90624C12.75 7.67365 12.5988 8.43355 12.3051 9.14254C12.0115 9.85154 11.581 10.4957 11.0384 11.0384C10.4957 11.581 9.85153 12.0115 9.14253 12.3052C8.43354 12.5988 7.67364 12.75 6.90623 12.75C6.13882 12.75 5.37892 12.5988 4.66992 12.3052C3.96092 12.0115 3.31671 11.581 2.77407 11.0384C2.23143 10.4957 1.80098 9.85154 1.50731 9.14254C1.21363 8.43355 1.06248 7.67365 1.06248 6.90624C1.06248 5.35638 1.67816 3.87 2.77407 2.77408C3.86999 1.67816 5.35637 1.06248 6.90623 1.06248C8.45609 1.06248 9.94247 1.67816 11.0384 2.77408C12.1343 3.87 12.75 5.35638 12.75 6.90624Z" fill="#01161E"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_204_29">
+                        <rect width="17" height="17" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                </button>
+            </search>
+        </header>
+        <main class="main">
+            <div class="selector">
+                <div class="list-apps">
+                    List of Apps
+                </div>
+                <div class="manage-apps">
+                    Manage Apps
+                </div>
+            </div>
+            <div class="app-info">
+                <div class="app-title"></div>
+                <div class="app-description"></div>
+                <div class="app-icon"></div>
+                <div class="app-install-btn">
+                    Install
+                </div>
+            </div>
+            <div class="apps-view">
+
+            </div>
+            <div class="terminal-view">
+                <div class="terminal-title">Terminal</div>
+                <output class="teminal-code"></output>
+                <div class="sendfield">
+                    <input type="text" class="send-input">
+                    <button class="send-btn">Send</button>
+                </div>
+            </div>
+        </main>
+        <script>
+            const appendToTerminal = function(text){
+                let terminal_code = document.querySelector('.teminal-code');
+                terminal_code.innerText = terminal_code.innerText + text;
+            }
+
+            document.querySelector('.send-btn').onclick = function(){
+                let command = document.querySelector('.send-input').value;
+                appendToTerminal('\nroot@decentra.app~# '+command+'\n')
+                decentra.makeCommand(command);
+            }
+
+            const showApp = function(list){
+                document.querySelector('.app-title').innerText = list.name;
+                document.querySelector('.app-install-btn').onclick = function(){
+                    decentra.installApp(list.path);
+                }
+            }
+
+            const sendListOfApps = function(list){
+                let appList = JSON.parse(list);
+                let appListView = document.querySelector('.apps-view');
+                appListView.innerHTML = '';
+                for (let a in appList){
+                    let app = appList[a];
+                    let newApp = document.createElement('div');
+                    newApp.classList.add('app-name');
+                    newApp.innerHTML = '<div class="title">' + app.name + '</div>';
+                    appListView.append(newApp);
+                    newApp.onclick = function(){
+                        showApp(app);
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
