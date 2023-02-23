@@ -1,0 +1,119 @@
+body {background: #01161E;color: #E2FDFF;font-family: 'Roboto', sans-serif;}
+
+header.header {
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+search {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    margin-left: 20px;
+}
+
+input[type="search"] {
+    display: flex;
+    flex-grow: 1;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    border: 1px solid #E2FDFF;
+    color: #E2FDFF;
+    outline: none;
+}
+
+.search-btn {
+    padding: 0px 20px;
+    background: #E2FDFF;
+    border: none;
+}
+
+.selector {
+    display: flex;
+    width: 100%;
+}
+
+.selector > div {
+    width: calc(100% / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: 1px solid;
+}
+
+.list-apps.selected {
+    background: #E2FDFF;
+    color: #05161e;
+    border: none;
+}
+
+.app-info {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    margin: 10px 0px;
+    display: none;
+}
+
+.app-title {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid;
+    font-weight: bold;
+}
+
+.app-install-btn {
+    margin: 10px 20px;
+    border: 1px solid;
+    padding: 10px 20px;
+    text-align: center;
+    background: #E2FDFF;
+    color: #05161e;
+    cursor: pointer;
+}
+
+.terminal-view {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+}
+
+.terminal-view {}
+
+.terminal-title {
+    padding: 10px 20px;
+    border-bottom: 1px solid;
+}
+
+.sendfield {
+    display: flex;
+    margin: 5px;
+    margin-top: -1px;
+}
+
+input.send-input {
+    flex-grow: 1;
+    padding: 10px 20px;
+    border: 1px solid;
+    color: #E2FDFF;
+    background: transparent;
+    outline: none;
+}
+
+button.send-btn {background: #E2FDFF;color: #05161e;border: none;}
+
+output.teminal-code {
+    min-height: 400px;
+    height: 400px;
+    background: transparent;
+    padding: 10px 20px;
+    border: 1px solid;
+    margin: 5px;
+    margin-bottom: 0px;
+    font-family: ui-monospace;
+    overflow: auto;
+    white-space: pre-wrap;
+}
